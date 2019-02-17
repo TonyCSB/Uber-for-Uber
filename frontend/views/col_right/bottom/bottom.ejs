@@ -16,6 +16,19 @@
     required
     placeholder="Price"
   />
-  <textarea name="description_input" id="description_input" required placeholder="Description"></textarea>
-  <button name="submit_button" id="submit_button">Submit</button>
+  <textarea
+    name="description_input"
+    id="description_input"
+    required
+    placeholder="Description"
+  ></textarea>
+  <button name="submit_button" onclick="submit();" id="submit_button">
+    Submit
+  </button>
+
+  <script>
+      function submit() {
+        makeItem({Name: $("#item_input").val(),Description: ':)', Price: 50});
+      }
+  </script>
 </div>
