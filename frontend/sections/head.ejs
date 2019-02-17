@@ -29,7 +29,12 @@
     }    
     var makeItem = (sendData) => {
         $.post( "/home/newItem", sendData);
-    }   
+    }
+    var removeMyItems = (callback) => {
+        $.post( "/home/removeMyItems", {}, (data, status) => {
+            callback(data);
+        });
+    }
     
 </script>
 
