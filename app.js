@@ -3,10 +3,7 @@ const express = require('express');
 
 /* Routes */
 const loginRoutes = require('./backend/routes/login-routes.js');
-const locationRoutes = require('./backend/routes/location-routes.js');
-const searchRoutes = require('./backend/routes/search-routes.js');
 const homeRoutes = require('./backend/routes/home-routes.js');
-const addRoutes = require('./backend/routes/addItem-routes');
 
 /* Passport Setup */
 const passport = require('passport');
@@ -31,6 +28,7 @@ app.use(cookies({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 /* Connect to mongoose */
 mongoose.connect(keys.mongodb.dbURI,{ useNewUrlParser: true }, () => console.log('Connected to Mongoose') );
@@ -42,9 +40,6 @@ app.use(express.static('frontend'));
 
 /* Routing */
 app.use('/login', loginRoutes);
-app.use('/search', searchRoutes);
-app.use('/add', addRoutes)
-app.use('/location', locationRoutes);
 app.use('/home', homeRoutes);
 app.get('/', (req,res) => {res.redirect('/home')})
 

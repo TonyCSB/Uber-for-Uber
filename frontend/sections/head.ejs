@@ -15,6 +15,18 @@
 
 </head>
 
+<script>
+
+var getData = (callback) => {
+
+    $.post( "/home/getUserProfile", {}, (data, status) => {
+        callback(data);
+    });
+
+}    
+
+</script>
+
 <style>
 
     html {
