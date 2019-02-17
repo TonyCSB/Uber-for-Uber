@@ -29,6 +29,8 @@ passport.use( new google({
     //Try to find existing value
     userModel.findOne({OAuthID: profile.id}).then((currentUser) =>{
 
+        console.log(currentUser);
+
         //It exists!
         if (currentUser){
             done(null, currentUser);

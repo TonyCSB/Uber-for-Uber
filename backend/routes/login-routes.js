@@ -10,7 +10,7 @@ const login = require('../util/cookie-loading.js');
 /* Routes */
 routes.get('/noUser', (req, res) => {
     res.clearCookie('Media Account Key');
-    res.send('Not Logged in');
+    res.render('login.ejs');
 });
 
 routes.get('/google', passport.authenticate('google',{
@@ -18,14 +18,7 @@ routes.get('/google', passport.authenticate('google',{
 }));
 
 routes.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-
-    /* Open user */
-    login.checkLogin(req, res, (userAccount) => {
-    
-        res.send(userAccount);
-    
-    });
-
+    res.redirect('/home');
 });
 
 /* Export */
