@@ -7,6 +7,7 @@ const login = require('../util/cookie-loading.js');
 
 /* Database Access */
 const passport = require('passport');
+const objects = require('../models/object-model.js');
 
 /* Gets the names of all the locations */
 routes.get('/', (req,res) => {
@@ -29,6 +30,34 @@ routes.post('/getUserProfile', (req, res) => {
     });
 
 });
+routes.post('/getAllItems', (req, res) => {
+
+    login.checkLogin(req, res, (userAccount) => {
+        passport.deserializeUser(userAccount, (n, user) => {
+
+            objects.find({Location: user.Location}).then(objects => {
+
+                var sendData = [];
+
+                objects.forEach((v,i)=>{
+                    sendData.push({
+                        Name: v.Name,
+                        Price: v.Price
+                    });
+                });
+
+                console.log(sendData);
+                res.send(sendData);
+
+            })
+
+        });
+    });
+
+});
+
+
+/* Set data */
 routes.post('/setUserDorm', (req, res) => {
 
     login.checkLogin(req, res, (userAccount) => {
@@ -36,7 +65,7 @@ routes.post('/setUserDorm', (req, res) => {
             
             user.Location = req.body.Location;
             user.save().then( () => res.send('saved'));
-            
+
         });
     });
 

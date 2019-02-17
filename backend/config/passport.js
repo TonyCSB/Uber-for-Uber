@@ -25,11 +25,8 @@ passport.use( new google({
 
 }, (accessToken, refreshToken, profile, done) => {
     
-    
     //Try to find existing value
     userModel.findOne({OAuthID: profile.id}).then((currentUser) =>{
-
-        console.log(currentUser);
 
         //It exists!
         if (currentUser){
@@ -38,6 +35,7 @@ passport.use( new google({
         //It doesnt, make new
         else{   
             new userModel({
+                OAuthID: profile.id,
                 Name: profile.name.givenName + ' ' + profile.name.familyName,
                 Location: profile.location
             }).save().then((newUser) => {

@@ -8,6 +8,7 @@ const object = new mongoose.Schema({
     Description:     String,
     Owner:           String,
     Price:           Number,
+    Location:        String,
 });
 
 /* Tag it as 'test' */
