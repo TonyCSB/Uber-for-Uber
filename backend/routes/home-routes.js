@@ -24,7 +24,8 @@ routes.post('/getUserProfile', (req, res) => {
     login.checkLogin(req, res, (userAccount) => {
         passport.deserializeUser(userAccount, (n, user) => {
             res.send({
-                name: user.Name
+                name: user.Name,
+                location: user.Location
             });
         });
     });
