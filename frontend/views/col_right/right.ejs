@@ -1,17 +1,8 @@
-<div style="background: #29b6f6">
-  <div style="text-align: center;" id="user"></div>
+<% include ./right_style %>
 
-  <script>
-    getData(profile => {
-      console.log(profile);
-
-      $("#user")[0].innerText = profile.name + " at " + profile.location;
-    });
-  </script>
-  <br>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-  <script>
+<div id="background">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
     function print_data(data) {
       $("#list").empty();
 
@@ -47,7 +38,7 @@
     onkeyup="get_data();"
     placeholder="Search..."
   />
-
+ 
   <div style="color:brown;" id="list"></div>
 </div>
 <div>

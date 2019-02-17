@@ -2,6 +2,7 @@
 
 <div id="bottom_div">
   <b>Add an Item</b>
+  <br>
   <input
     type="text"
     name="item_input"
@@ -13,22 +14,25 @@
     type="number"
     name="price_input"
     id="price_input"
+    min="0"
     required
     placeholder="Price"
   />
-  <textarea
+  <input
+    type="text"
     name="description_input"
     id="description_input"
     required
     placeholder="Description"
-  ></textarea>
+  />
   <button name="submit_button" onclick="submit();" id="submit_button">
     Submit
   </button>
 
   <script>
-      function submit() {
-        makeItem({Name: $("#item_input").val(),Description: ':)', Price: 50});
-      }
+    function submit() {
+        var obj ={ Name: $("#item_input").val(), Description: $("#description_input").val(), Price: $("#price_input") } 
+      makeItem(obj);
+    }
   </script>
 </div>
