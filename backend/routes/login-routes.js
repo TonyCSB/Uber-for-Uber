@@ -22,7 +22,7 @@ routes.get('/google/redirect', passport.authenticate('google'), (req, res) => {
     /* Open user */
     login.checkLogin(req, res, (userAccount) => {
     
-        res.send(userAccount.Name);
+        res.send(userAccount);
     
     });
 

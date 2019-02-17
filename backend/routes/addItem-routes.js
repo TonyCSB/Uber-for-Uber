@@ -23,6 +23,7 @@ routes.get('/item/:Name.:Description.:Price', (req, res) => {
         Price:           req.params.Price,
     }).save().then(()=>res.send("Saved!"));
 
+    userModel.findOneAndUpdate({_id: owner});
 
 });
 
