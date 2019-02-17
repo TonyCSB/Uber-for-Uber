@@ -2,7 +2,7 @@
 
 <div id="bottom_div">
   <b>Add an Item</b>
-  <br>
+  <br />
   <input
     type="text"
     name="item_input"
@@ -31,8 +31,19 @@
 
   <script>
     function submit() {
-        var obj = { Name: $("#item_input").val(), Description: $("#description_input").val(), Price: $("#price_input").val() } 
-      makeItem(obj);
+      var name = $("#item_input").val();
+      var desc = $("#description_input").val();
+      var price = $("#price_input").val();
+      
+      if (price && name && desc) {
+        var obj = {
+          Name: name,
+          Description: desc,
+          Price: price
+        };
+        makeItem(obj);
+      }
+      location.reload();
     }
   </script>
 </div>

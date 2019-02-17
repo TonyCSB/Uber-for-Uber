@@ -1,7 +1,6 @@
 <% include ./right_style %>
 
 <div id="background">
-  <button onclick="removeMyItems(a=>{});">Delete my Items</button>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     function print_data(data) {
@@ -38,8 +37,24 @@
     onkeyup="get_data();"
     placeholder="Search..."
   />
- 
+  <script>
+    var input = $("#search");
+    input[0].addEventListener("keyup", function(event) {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        //event.preventDefault();
+        // Trigger the button element with a click
+        $("#delete")[0].click();
+      }
+    });
+  </script>
+
   <div style="color:brown;" id="list"></div>
+
+  <button id="delete" onclick="removeMyItems(a=>{});location.reload();">
+    Delete my Items
+  </button>
 </div>
 <div>
   <% include ./bottom/bottom %>

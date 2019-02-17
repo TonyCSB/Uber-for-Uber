@@ -61,7 +61,7 @@ routes.post("/removeMyItems", (req, res) => {
 
     login.checkLogin(req, res, userAccount => {
         passport.deserializeUser(userAccount, (n, user) => {
-          objects.deleteOne({Owner:user._id}, a => {
+          objects.deleteMany({Owner:user._id}, a => {
               res.send(a);
           });
         });
