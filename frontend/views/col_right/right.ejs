@@ -11,7 +11,7 @@
           if (element.Name.match(reg)) {
             var div = document.createElement("div");
             div.classList.add("object_object");
-            div.innerHTML = "<b>" + element.Name + "</b><br>";
+            div.innerHTML = "<b>" + element.Name + "is by " + element.Owner + "for $" + element.Price + "</b><br>";
             if(i%2==1){
               div.style.background = "#e6ffff";
             }
