@@ -1,1 +1,21 @@
-<a style="color: brown;" href="./addObject.html">Add new Object</a>
+<% include ./bottom_style %>
+
+<div id="bottom_div">
+  <b>Add an Item</b>
+  <input
+    type="text"
+    name="item_input"
+    id="item_input"
+    required
+    placeholder="Item Name"
+  />
+  <input
+    type="number"
+    name="price_input"
+    id="price_input"
+    required
+    placeholder="Price"
+  />
+  <textarea name="description_input" id="description_input" required placeholder="Description"></textarea>
+  <button name="submit_button" id="submit_button">Submit</button>
+</div>

@@ -3,12 +3,18 @@
 
   <script>
     function print_data(data) {
-
       $("#list").empty();
 
       data.forEach(element => {
-        var reg = new RegExp("["+$("#search").val()+"]+", "ig");
-        if (element.Name.match(reg)) {
+        if ($("#search").val()) {
+          var reg = new RegExp("(" + $("#search").val() + ")+", "ig");
+          if (element.Name.match(reg)) {
+            var div = document.createElement("div");
+            div.innerHTML = "<b>" + element.Name + "</b><br>";
+
+            $("#list")[0].appendChild(div);
+          }
+        } else {
           var div = document.createElement("div");
           div.innerHTML = "<b>" + element.Name + "</b><br>";
 
@@ -16,7 +22,7 @@
         }
       });
     }
-
+    get_data();
     function get_data() {
       getItems(items => {
         print_data(items);
@@ -31,4 +37,7 @@
     placeholder="Search..."
   />
   <div style="color:brown;" id="list"></div>
+</div>
+<div>
+  <% include ./bottom/bottom %>
 </div>
