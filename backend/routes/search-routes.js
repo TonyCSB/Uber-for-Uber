@@ -12,7 +12,7 @@ routes.post('/item/:Name', (req, res) => {
     });
 });
 
-routes.get('/location/:Name', (req, res) => {
+routes.post('/location/:Name', (req, res) => {
 
     var regex = new RegExp(req.params.Name, 'i');
 
