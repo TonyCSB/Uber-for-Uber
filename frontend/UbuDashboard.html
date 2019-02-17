@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        
+        * {
+            
+            margin: 0;
+            padding: 0;
+        }
+        
+        #topnav {
+            
+            background-color: black;
+            padding: 30px;
+            padding-bottom: 0;
+        }
+        
+        select {
+            
+            color: darkred;
+            margin-bottom: 20px;
+            font-size: 50px;
+            border: none;
+            background: none;
+        }
+        
+        select, .tab button{
+            
+            font-family: "Arial Black", Gadget, sans-serif;
+        }
+        
+        #topnav, #chat {
+            
+            text-align: center;
+        }
+        
+        input {
+            
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+        
+        /* Tabs Style */
+        
+        .tab {
+          overflow: hidden;
+          background-color: black;
+        }
+
+        /* Style the buttons that are used to open the tab content */
+        .tab button {
+          background-color: inherit;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          transition: 0.3s;
+            font-size: 15px;
+            color: darkred;
+          padding: 10px 11px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+          background-color: darkgoldenrod;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+          background-color: darkgoldenrod;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+          display: none;
+          border: 1px solid #ccc;
+          border-top: none;
+        }
+    </style>
+	
+    <script type="text/javascript">
+	
+		var item1 = {type:"stapler", owner:"Bob", price:50, room:"3202"};
+		var item2 = {type:"printer", owner:"Jim", price:10, room:"4507"};
+		var item3 = {type:"blowjob", owner:"Sally", price:9000, room:"6968"};	
+		
+		var items = [item1, item2, item3];
+		
+        function fill_list() {
+			for(var i = 0; i < items.length; i++){
+				var div = document.createElement('div');
+				div.id = i;
+				div.innerHTML = `
+				<h3 class = "owner">`+items[i].owner+`</h3>
+				<h1 class = "type">`+items[i].type+`</h1>
+				<h3 class = "price">`+items[i].price+`</h3>`;
+				document.body.appendChild(div);
+			}
+		}
+        window.onload = fill_list;
+    </script>
+	
+    <script>
+        document.getElementById("defaultOpen").click();
+        
+        function openCity(evt, cityName) {
+          // Declare all variables
+          var i, tabcontent, tablinks;
+
+          // Get all elements with class="tabcontent" and hide them
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+
+          // Get all elements with class="tablinks" and remove the class "active"
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+
+          // Show the current tab, and add an "active" class to the button that opened the tab
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+    </script>
+	
+<head>
+<title>Name</title>
+</head>
+<body>
+    
+    <div id="topnav">
+        
+        <select>
+          <option value="hall">Cumberland</option>
+        </select>
+
+        
+        <!-- Tab links -->
+        <div class="tab">
+          <button class="tablinks" onclick="openCity(event, 'objects')" id="defaultOpen">Objects</button>
+          <button class="tablinks" onclick="openCity(event, 'chat')">Chat</button>
+        </div>
+    </div>
+    
+    <!-- Tab content -->
+    
+    <div id="objects" class="tabcontent">
+		<br>
+        <input type="text" placeholder = "search...">
+		<br>
+		<div id = "list">
+		</div>
+    </div>
+    
+    <div id="chat" class="tabcontent">
+        <iframe src='https://minnit.chat/Cumberland?embed&web' width='1000' height='500' style='border:none;' allowTransparency='true'></iframe><br><a href='https://minnit.chat/Cumberland' target='_blank'></a> 
+    </div>
+
+</body>
+</html>

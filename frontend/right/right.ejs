@@ -1,4 +1,30 @@
-<div style = "background: blue">
+<div style="background: blue">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+  <script>
+      //$.post( "/home/getBasicInfo", {}, (data, status) => {console.log(data)} );
+    function run() {
+      $.ajax({
+        data: $("#search"),
+        type: "POST",
+        url: "http://localhost:8080/search/item/:",
+        success: handleButtonResponse
+      });
 
+      function handleButtonResponse(data) {
+        console.log(data);
+
+        $("#list").append(data);
+      }
+    }
+    run();
+  </script>
+  <input
+    type="search"
+    name="search"
+    id="search"
+    onkeyup="run();"
+    placeholder="Search..."
+  />
+  <span style="color:brown;" id="list"></span>
 </div>
