@@ -7,15 +7,18 @@
 
     //Get List of all community members
     var member1 = {name:"Jeff"}
-    var member2 = {name:'Jimmy'}
-    community_members = [member1, member2]
+    var member2 = {name:'Jerry'}
+    var member3 = {name:'Jim'}
+    community_members = [member1, member2, member3]
+
     member_list = document.getElementById('member_list');
+    
     for(var i = 0; i < community_members.length; i++){
 				var div = document.createElement('div');
-				div.class = 'member_list_item';
+				div.classList.add('member_list_item');
                 div.innerHTML = `
-                <img src="./left/Artwork.jpg" alt="Profile" width=30%>
-				<h3 class = "member_name">`+community_members[i].name+`</h3>`
+                <img src="./left/Artwork.jpg" alt="Profile" height=40px style="position:absolute" >
+				<h3 style="margin-top:0; margin-left:50px">`+community_members[i].name+`</h3>`
 				member_list.appendChild(div);
 			}
 </script>
