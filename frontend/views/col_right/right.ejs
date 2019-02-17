@@ -5,18 +5,33 @@
     function print_data(data) {
       $("#list").empty();
 
-      data.forEach(element => {
+      data.forEach((element,i) => {
         if ($("#search").val()) {
           var reg = new RegExp("(" + $("#search").val() + ")+", "ig");
           if (element.Name.match(reg)) {
             var div = document.createElement("div");
+            div.classList.add("object_object");
             div.innerHTML = "<b>" + element.Name + "</b><br>";
+            if(i%2==1){
+              div.style.background = "#e6ffff";
+            }
+            else{
+              div.style.background = "#b3e5fc";
+            }
+            
 
             $("#list")[0].appendChild(div);
           }
         } else {
           var div = document.createElement("div");
+          div.classList.add("object_object");
           div.innerHTML = "<b>" + element.Name + "</b><br>";
+          if(i%2==1){
+              div.style.background = "#e6ffff";
+            }
+            else{
+              div.style.background = "#b3e5fc";
+            }
 
           $("#list")[0].appendChild(div);
         }
@@ -36,8 +51,9 @@
     onkeyup="get_data();"
     placeholder="Search..."
   />
-
-  <div style="color:brown;" id="list"></div>
+  <br>
+  <br>
+  <div style="color:black;" id="list"></div>
 
   <button id="delete" onclick="removeMyItems(a=>{});location.reload();">
     Delete my Items
