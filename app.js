@@ -14,6 +14,9 @@ const app = express();
 /* Connect to mongoose */
 mongoose.connect(keys.mongodb.dbURI,{ useNewUrlParser: true }, () => console.log('Connected to Mongoose') );
 
+/* Allows static access to frontend file */
+app.use(express.static('frontend'));
+
 /* Routing */
 app.get('/', (req,res)=>res.send("Here!"));
 app.use('/this', testing);

@@ -1,6 +1,6 @@
 module.exports = {
     mongodb: {
-        dbURI: 'mongodb://orcus:fivesfives5@ds163769.mlab.com:63769/uber4uber',
+        dbURI: 'mongodb://username:password1!@ds019063.mlab.com:19063/uber4uber',
         useNewUrlParser: true 
     }
 };
