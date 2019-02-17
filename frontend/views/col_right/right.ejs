@@ -2,29 +2,33 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <script>
-      //$.post( "/home/getBasicInfo", {}, (data, status) => {console.log(data)} );
-    function run() {
-      $.ajax({
-        data: $("#search"),
-        type: "POST",
-        url: "http://localhost:8080/search/item/:",
-        success: handleButtonResponse
+    function print_data(data) {
+
+      $("#list").empty();
+
+      data.forEach(element => {
+        var reg = new RegExp("["+$("#search").val()+"]+", "ig");
+        if (element.Name.match(reg)) {
+          var div = document.createElement("div");
+          div.innerHTML = "<b>" + element.Name + "</b><br>";
+
+          $("#list")[0].appendChild(div);
+        }
       });
-
-      function handleButtonResponse(data) {
-        console.log(data);
-
-        $("#list").append(data);
-      }
     }
-    run();
+
+    function get_data() {
+      getItems(items => {
+        print_data(items);
+      });
+    }
   </script>
   <input
     type="search"
     name="search"
     id="search"
-    onkeyup="run();"
+    onkeyup="get_data();"
     placeholder="Search..."
   />
-  <span style="color:brown;" id="list"></span>
+  <div style="color:brown;" id="list"></div>
 </div>
