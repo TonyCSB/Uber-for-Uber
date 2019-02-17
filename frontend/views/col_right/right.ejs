@@ -1,4 +1,14 @@
 <div style="background: #29b6f6">
+  <div style="text-align: center;" id="user"></div>
+
+  <script>
+    getData(profile => {
+      console.log(profile);
+
+      $("#user")[0].innerText = profile.name + " at " + profile.location;
+    });
+  </script>
+  <br>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <script>
@@ -36,6 +46,7 @@
     onkeyup="get_data();"
     placeholder="Search..."
   />
+
   <div style="color:brown;" id="list"></div>
 </div>
 <div>
