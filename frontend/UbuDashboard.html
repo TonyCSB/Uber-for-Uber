@@ -76,7 +76,29 @@
           border-top: none;
         }
     </style>
-    
+	
+    <script type="text/javascript">
+	
+		var item1 = {type:"stapler", owner:"Bob", price:50, room:"3202"};
+		var item2 = {type:"printer", owner:"Jim", price:10, room:"4507"};
+		var item3 = {type:"blowjob", owner:"Sally", price:9000, room:"6968"};	
+		
+		var items = [item1, item2, item3];
+		
+        function fill_list() {
+			for(var i = 0; i < items.length; i++){
+				var div = document.createElement('div');
+				div.id = i;
+				div.innerHTML = `
+				<h3 class = "owner">`+items[i].owner+`</h3>
+				<h1 class = "type">`+items[i].type+`</h1>
+				<h3 class = "price">`+items[i].price+`</h3>`;
+				document.body.appendChild(div);
+			}
+		}
+        window.onload = fill_list;
+    </script>
+	
     <script>
         document.getElementById("defaultOpen").click();
         
@@ -101,6 +123,7 @@
           evt.currentTarget.className += " active";
         }
     </script>
+	
 <head>
 <title>Name</title>
 </head>
@@ -124,7 +147,8 @@
     <!-- Tab content -->
     
     <div id="objects" class="tabcontent">
-    
+		<div id = "list">
+		</div>
     </div>
     
     <div id="chat" class="tabcontent">
