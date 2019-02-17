@@ -31,34 +31,24 @@ routes.post("/getUserProfile", (req, res) => {
 
 routes.post("/getAllItems", (req, res) => {
   login.checkLogin(req, res, userAccount => {
-    passport.deserializeUser(userAccount,(n, user) => {
+    passport.deserializeUser(userAccount, (n, user) => {
       objects.find({ Location: user.Location }).then(object => {
         var sendData = [];
 
         object.forEach((v, i) => {
+          var owner="";
+          users.forEach((j, l) => {
+            j.Objects.forEach((h, k) => {
+              if (h == req.j) {
+                owner = h;
+              }
+            });
+          });
           sendData.push({
             Name: v.Name,
             Price: v.Price,
-            Location: v.Location
-          });
-        });
-
-        res.send(sendData);
-      });
-    });
-  });
-});
-
-routes.post("/getAllUsers", (req, res) => {
-  login.checkLogin(req, res, userAccount => {
-    passport.deserializeUser(userAccount,(n, user) => {
-      users.find({ Location: user.Location }).then(object => {
-        var sendData = [];
-
-        users.forEach((v, i) => {
-          sendData.push({
-            Name: v.Name,
-            Price: v.Price
+            Location: v.Location,
+            Owner: owner
           });
         });
 
@@ -79,14 +69,13 @@ routes.post("/setUserDorm", (req, res) => {
 });
 
 routes.post("/removeMyItems", (req, res) => {
-
-    login.checkLogin(req, res, userAccount => {
-        passport.deserializeUser(userAccount, (n, user) => {
-          objects.deleteMany({Owner:user._id}, a => {
-              res.send(a);
-          });
-        });
+  login.checkLogin(req, res, userAccount => {
+    passport.deserializeUser(userAccount, (n, user) => {
+      objects.deleteMany({ Owner: user._id }, a => {
+        res.send(a);
+      });
     });
+  });
 });
 
 routes.post("/newItem", (req, res) => {
