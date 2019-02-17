@@ -2,14 +2,32 @@
 const express = require('express');     
 
 /* Routes */
-const requests = require('./backend/routes/request-routes.js');
+const getRoutes = require('./backend/routes/request-routes.js');
+const loginRoutes = require('./backend/routes/login-routes.js');
+
+/* Passport Setup */
+const passport = require('passport');
+const passportConfig = require('./backend/config/passport.js');
 
 /* MongoDB Connection */
 const mongoose = require('mongoose');
 const keys = require('./backend/config/keys.js');
 
+/* Cookie Setup */
+const cookies = require('cookie-session');
+const bodyParser = require('body-parser');
+
 /* Create the app */
 const app = express();
+
+/* Passport */
+app.use(cookies({
+    name: 'Media Account Key',
+    keys: [keys.session.cookieKey],
+    maxAge: 24 * 60 * 60 * 1000
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 /* Connect to mongoose */
 mongoose.connect(keys.mongodb.dbURI,{ useNewUrlParser: true }, () => console.log('Connected to Mongoose') );
@@ -18,7 +36,8 @@ mongoose.connect(keys.mongodb.dbURI,{ useNewUrlParser: true }, () => console.log
 app.use(express.static('frontend'));
 
 /* Routing */
-app.use('/get', requests);
+app.use('/get', getRoutes);
+app.use('/login', loginRoutes);
 
 /* Open Up Server */
 app.listen(8080, () => console.log("Started on 8080"));
