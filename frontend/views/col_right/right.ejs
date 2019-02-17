@@ -4,8 +4,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     getData(profile => {
-      console.log(profile);
-
       $("#user")[0].innerText = profile.name + " at " + profile.location;
     });
   </script>
@@ -45,7 +43,7 @@
     onkeyup="get_data();"
     placeholder="Search..."
   />
-
+  <br>
   <div style="color:brown;" id="list"></div>
 </div>
 <div>
