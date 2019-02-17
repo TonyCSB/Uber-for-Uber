@@ -1,8 +1,8 @@
 /* Use Express For App */
 const express = require('express');     
 
-/* Login Routs */
-const testing = require('./backend/routes/testing.js');
+/* Routes */
+const requests = require('./backend/routes/request-routes.js');
 
 /* MongoDB Connection */
 const mongoose = require('mongoose');
@@ -18,8 +18,7 @@ mongoose.connect(keys.mongodb.dbURI,{ useNewUrlParser: true }, () => console.log
 app.use(express.static('frontend'));
 
 /* Routing */
-app.get('/', (req,res)=>res.send("Here!"));
-app.use('/this', testing);
+app.use('/get', requests);
 
 /* Open Up Server */
 app.listen(8080, () => console.log("Started on 8080"));
