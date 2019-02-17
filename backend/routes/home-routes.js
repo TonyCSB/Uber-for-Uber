@@ -70,5 +70,28 @@ routes.post('/setUserDorm', (req, res) => {
     });
 
 });
+routes.post('/newItem', (req, res) => {
+
+    /* Example input
+        Name:
+        Description:
+        Price:
+    */
+
+    login.checkLogin(req, res, (userAccount) => {
+        passport.deserializeUser(userAccount, (n, user) => {
+            
+            new objects({
+                Name: req.body.Name,
+                Description: req.body.Description,
+                Owner: user._id,
+                Price: req.body.Price,
+                Location: user.Location
+            }).save().then(res.send('saved'));
+            
+        });
+    });
+
+});
 
 module.exports = routes;

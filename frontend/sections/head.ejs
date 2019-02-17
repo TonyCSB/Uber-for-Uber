@@ -26,10 +26,11 @@
         $.post( "/home/getAllItems", {}, (data, status) => {
             callback(data);
         });
-    } 
+    }    
+    var makeItem = (sendData) => {
+        $.post( "/home/newItem", sendData);
+    }   
     
-    getItems(a => console.log(a));
-
 </script>
 
 <style>

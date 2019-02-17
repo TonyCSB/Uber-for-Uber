@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 /* Define Structure of data for database */
 const object = new mongoose.Schema({
     Name:            String,
-    Pic:             String,
     Description:     String,
     Owner:           String,
     Price:           Number,
