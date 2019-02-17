@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 /* Define Structure of data for database */
 const messages = new mongoose.Schema({
     SendID:             String,
-    ReceiverID:         Number,
+    ReceiverID:         String,
     Text:               String,
 });
 
