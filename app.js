@@ -3,6 +3,7 @@ const express = require('express');
 
 /* Routes */
 const loginRoutes = require('./backend/routes/login-routes.js');
+const locationRoutes = require('./backend/routes/location-routes.js');
 const searchRoutes = require('./backend/routes/search-routes.js');
 
 /* Passport Setup */
@@ -33,11 +34,15 @@ app.use(passport.session());
 mongoose.connect(keys.mongodb.dbURI,{ useNewUrlParser: true }, () => console.log('Connected to Mongoose') );
 
 /* Allows static access to frontend file */
+app.set('views', './frontend');
+app.set('view engine', 'ejs');
 app.use(express.static('frontend'));
 
 /* Routing */
 app.use('/login', loginRoutes);
 app.use('/search', searchRoutes);
+app.use('/location', locationRoutes);
+app.get('/', (req,res) => {res.render('index.ejs')})
 
 /* Open Up Server */
 app.listen(8080, () => console.log("Started on 8080"));
