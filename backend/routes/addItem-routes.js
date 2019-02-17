@@ -6,24 +6,22 @@ const userModel = require('../models/user-model.js')
 /* For cookies */
 const login = require('../util/cookie-loading.js');
 
-routes.get('/item/:Name.:Description.:Price', (req, res) => {
-
-    const owner = "";
+routes.post('/item/:Name.:Description.:Price', (req, res) => {
 
     login.checkLogin(req, res, (userAccount) => {
-    
-        owner = userAccount._id;
+        
+        const owner = userAccount._id;
+
+        const object = new objectModel({
+            Name:            req.params.Name,
+            Description:     req.params.Description,
+            Owner:           owner,
+            Price:           req.params.Price,
+        }).save().then(()=>res.send("Saved!"));
+
+        userModel.findOneAndUpdate({_id: owner}, {$push: { "Objects": object._id }});
     
     });
-
-    new objectModel({
-        Name:            req.params.Name,
-        Description:     req.params.Description,
-        Owner:           owner,
-        Price:           req.params.Price,
-    }).save().then(()=>res.send("Saved!"));
-
-    userModel.findOneAndUpdate({_id: owner});
 
 });
 
