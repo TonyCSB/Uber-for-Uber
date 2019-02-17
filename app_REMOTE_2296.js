@@ -5,8 +5,7 @@ const express = require('express');
 const loginRoutes = require('./backend/routes/login-routes.js');
 const locationRoutes = require('./backend/routes/location-routes.js');
 const searchRoutes = require('./backend/routes/search-routes.js');
-const homeRoutes = require('./backend/routes/home-routes.js');
-const addRoutes = require('./backend/routes/addItem-routes');
+const addRoutes = require('./backend/routes/addItem-routes')
 
 /* Passport Setup */
 const passport = require('passport');
@@ -45,8 +44,7 @@ app.use('/login', loginRoutes);
 app.use('/search', searchRoutes);
 app.use('/add', addRoutes)
 app.use('/location', locationRoutes);
-app.use('/home', homeRoutes);
-app.get('/', (req,res) => {res.redirect('/home')})
+app.get('/', (req,res) => {res.render('index.ejs')})
 
 /* Open Up Server */
 app.listen(8080, () => console.log("Started on 8080"));

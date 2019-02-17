@@ -5,8 +5,11 @@ const express = require('express');
 const loginRoutes = require('./backend/routes/login-routes.js');
 const locationRoutes = require('./backend/routes/location-routes.js');
 const searchRoutes = require('./backend/routes/search-routes.js');
+<<<<<<< HEAD
 const homeRoutes = require('./backend/routes/home-routes.js');
-const addRoutes = require('./backend/routes/addItem-routes');
+=======
+const addRoutes = require('./backend/routes/addItem-routes')
+>>>>>>> 0597b5dda7b264bb553e3fb0db08db39d6871fc8
 
 /* Passport Setup */
 const passport = require('passport');
