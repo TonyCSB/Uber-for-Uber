@@ -2,9 +2,8 @@
 const express = require('express');     
 
 /* Routes */
-const getRoutes = require('./backend/routes/request-routes.js');
 const loginRoutes = require('./backend/routes/login-routes.js');
-const searchs = require('./backend/routes/search-routes.js');
+const searchRoutes = require('./backend/routes/search-routes.js');
 
 /* Passport Setup */
 const passport = require('passport');
@@ -37,9 +36,8 @@ mongoose.connect(keys.mongodb.dbURI,{ useNewUrlParser: true }, () => console.log
 app.use(express.static('frontend'));
 
 /* Routing */
-app.use('/get', getRoutes);
 app.use('/login', loginRoutes);
-app.use('/search', searchs);
+app.use('/search', searchRoutes);
 
 /* Open Up Server */
 app.listen(8080, () => console.log("Started on 8080"));
