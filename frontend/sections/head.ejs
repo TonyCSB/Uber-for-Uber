@@ -17,14 +17,25 @@
 
 <script>
 
-var getData = (callback) => {
-
-    $.post( "/home/getUserProfile", {}, (data, status) => {
-        callback(data);
-    });
-
-}    
-
+    var getData = (callback) => {
+        $.post( "/home/getUserProfile", {}, (data, status) => {
+            callback(data);
+        });
+    }    
+    var getItems = (callback) => {
+        $.post( "/home/getAllItems", {}, (data, status) => {
+            callback(data);
+        });
+    }    
+    var makeItem = (sendData) => {
+        $.post( "/home/newItem", sendData);
+    }
+    var removeMyItems = (callback) => {
+        $.post( "/home/removeMyItems", {}, (data, status) => {
+            callback(data);
+        });
+    }
+    
 </script>
 
 <style>

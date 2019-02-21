@@ -1,1 +1,59 @@
-<a style="color: brown;" href="./addObject.html">Add new Object</a>
+<% include ./bottom_style %>
+
+<div id="bottom_div">
+  <b id="b">Add an Item</b>
+  <br />
+  <input
+    type="text"
+    name="item_input"
+    id="item_input"
+    required
+    placeholder="Item Name"
+  />
+  <input
+    type="number"
+    name="price_input"
+    id="price_input"
+    min="0"
+    required
+    placeholder="Price"
+  />
+  <input
+    type="text"
+    name="description_input"
+    id="description_input"
+    required
+    placeholder="Description"
+  />
+  <button name="submit_button" onclick="submit();" id="submit_button">
+    Submit
+  </button>
+
+  <script>
+    function submit() {
+      var name = $("#item_input").val();
+      var desc = $("#description_input").val();
+      var price = $("#price_input").val();
+
+      if (price && name && desc) {
+        var obj = {
+          Name: name,
+          Description: desc,
+          Price: price
+        };
+        makeItem(obj);
+      }
+      location.reload();
+    }
+    var input = $("#description_input");
+    input[0].addEventListener("keyup", function(event) {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        //event.preventDefault();
+        // Trigger the button element with a click
+        $("#submit")[0].click();
+      }
+    });
+  </script>
+</div>
